@@ -2,6 +2,8 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 from sklearn.preprocessing import StandardScaler
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
@@ -40,3 +42,15 @@ def results():
 
 if __name__ == "__main__":
     app.run(debug=False)
+
+
+
+
+db = SQLAlchemy()
+POSTGRES = {
+    'user': 'akshay',
+    'pw': '@akshay1',
+    'db': 'mydb',
+    'host': 'localhost',
+    'port': '5432',
+}
